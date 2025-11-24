@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Química Geral</title>
     
-    <!-- ========================================================================== -->
-    <!-- ÁREA DO GOOGLE ADSENSE (SCRIPT GLOBAL)                                     -->
-    <!-- Este script conecta seu site ao Google para verificação e Auto Ads         -->
-    <!-- ========================================================================== -->
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2346315010087866"
      crossorigin="anonymous"></script>
 
@@ -23,41 +18,15 @@
         header h1 { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-weight: 900; font-size: 2.5rem; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase; }
         
         /* --- MENU --- */
-        nav { background-color: #004494; padding: 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        nav a { 
-            display: inline-block; 
-            padding: 1rem 1.5rem; 
-            color: white; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 1rem; 
-            text-transform: uppercase; 
-            cursor: pointer; 
-            border-bottom: 4px solid transparent; 
-        }
+        nav { background-color: #004494; padding: 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        nav a { display: inline-block; padding: 1rem 1.2rem; color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; border-bottom: 4px solid transparent; }
         nav a:hover { background-color: #003370; color: #ffcc00; }
         nav a.ativo { border-bottom: 4px solid #ffcc00; background-color: #00387a; }
 
         /* --- LAYOUT --- */
         .container { display: flex; flex: 1; max-width: 1200px; margin: 30px auto; width: 100%; gap: 20px; padding: 0 15px; }
-        
-        /* Estilo da caixa de anúncio (pode remover a borda depois que colocar o anúncio real) */
-        .anuncio-lateral { 
-            width: 200px; 
-            background-color: #e9ecef; 
-            border: 1px dashed #ced4da; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #adb5bd; 
-            font-weight: bold; 
-            text-align: center; 
-            flex-shrink: 0; 
-            font-size: 0.9rem;
-            overflow: hidden; /* Garante que o anúncio não vaze */
-        }
-        
-        main { flex-grow: 1; background-color: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-height: 500px; }
+        .anuncio-lateral { width: 200px; background-color: #e9ecef; border: 1px dashed #ced4da; display: flex; align-items: center; justify-content: center; color: #adb5bd; font-weight: bold; text-align: center; flex-shrink: 0; font-size: 0.9rem; overflow: hidden; }
+        main { flex-grow: 1; background-color: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); min-height: 500px; width: 100%; }
 
         /* --- PÁGINAS VIRTUAIS --- */
         .pagina { display: none; animation: fadeIn 0.5s; }
@@ -72,14 +41,9 @@
         .input-group input:focus, .input-group select:focus { border-color: #0056b3; outline: none; }
         .row { display: flex; gap: 20px; }
         .col { flex: 1; }
-
-        /* --- BOTÕES --- */
         button.btn-calcular { width: 100%; padding: 15px; background-color: #0056b3; color: white; font-size: 1.1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;}
         button.btn-calcular:hover { background-color: #004494; transform: translateY(-2px); }
         button.btn-secundario { background-color: #6c757d; }
-        button.btn-secundario:hover { background-color: #5a6268; }
-        
-        /* --- EXTRAS --- */
         .resultado-box { margin-top: 20px; padding: 20px; background-color: #d1e7dd; color: #0f5132; border-radius: 6px; text-align: center; display: none; border: 1px solid #badbcc; }
         .legenda-container { display: flex; gap: 10px; background-color: #fff3cd; border: 1px solid #ffecb5; padding: 15px; border-radius: 8px; margin-bottom: 25px; flex-wrap: wrap; justify-content: center; }
         .legenda-item { margin: 0 10px; font-size: 0.9rem; color: #856404; }
@@ -89,22 +53,68 @@
         .converter-box { background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; margin-bottom: 30px; }
         .converter-title { font-size: 1.2rem; font-weight: bold; color: #0056b3; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
-        /* --- NOTA DO AUTOR --- */
-        .autor-nota {
-            background-color: #fff3cd;
-            padding: 15px;
-            border-left: 5px solid #ffc107;
-            margin-bottom: 20px;
-            font-style: italic;
+        /* --- SLATER --- */
+        .config-eletronica { font-family: 'Courier New', Courier, monospace; background: #222; color: #0f0; padding: 15px; border-radius: 5px; text-align: center; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; word-wrap: break-word; }
+        .slater-steps { text-align: left; background: #fff; padding: 15px; border-left: 4px solid #0056b3; margin-top: 15px; font-size: 0.95rem; line-height: 1.6; }
+        .alerta-excecao { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 0.9rem; display: none; }
+        #elemento-display { color: #0056b3; font-weight: bold; font-size: 1.2rem; margin-left: 15px; opacity: 0; transition: opacity 0.3s; }
+
+        /* --- TABELA PERIÓDICA (CSS GRID) --- */
+        .tabela-scroll { overflow-x: auto; padding-bottom: 20px; }
+        .periodic-table { display: grid; grid-template-columns: repeat(18, 1fr); gap: 3px; min-width: 900px; margin-top: 20px; }
+        .element-cell { aspect-ratio: 1/1; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; font-size: 0.8rem; }
+        .element-cell:hover { transform: scale(1.2); z-index: 10; box-shadow: 0 0 10px rgba(0,0,0,0.2); background-color: #fff; border-color: #0056b3; }
+        .cell-num { font-size: 0.65rem; position: absolute; top: 2px; left: 2px; color: #555; }
+        .cell-sym { font-weight: bold; font-size: 1.1rem; color: #000; }
+        .cell-name { font-size: 0.55rem; color: #444; text-align: center; overflow: hidden; white-space: nowrap; width: 90%; text-overflow: ellipsis; }
+        
+        /* Cores das Famílias (ATUALIZADO PARA CORES DISTINTAS) */
+        .cat-nao-metal { background-color: #a2f2a6; } /* Verde Claro */
+        .cat-gas-nobre { background-color: #99ddff; } /* Azul Céu */
+        .cat-metal-alcalino { background-color: #ff9999; } /* Vermelho/Salmão */
+        .cat-metal-alcalino-terroso { background-color: #ffdead; } /* Laranja Claro */
+        .cat-semimetal { background-color: #8fbc8f; } /* Verde Musgo */
+        .cat-halogenio { background-color: #e0b0ff; } /* Roxo/Lilás */
+        .cat-metal-transicao { background-color: #ffc0c0; } /* Rosa Claro */
+        .cat-lantanideo { background-color: #ffbfff; } /* Rosa Choque */
+        .cat-actinideo { background-color: #ff99cc; } /* Rosa Mais Escuro */
+        .cat-metal-representativo { background-color: #cccccc; } /* Cinza */
+
+        /* LEGENDA DA TABELA */
+        .legenda-tabela {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .legenda-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+        .legenda-box {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
         }
 
+        /* Modal de Detalhes */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; animation: slideDown 0.3s; }
+        .btn-close-modal { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; border: none; background: none; color: #666; }
+        @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .autor-nota { background-color: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-bottom: 20px; font-style: italic; }
         footer { background-color: #212529; color: #aaa; text-align: center; padding: 2rem; margin-top: auto; }
-
-        @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .anuncio-lateral { width: 100%; height: 100px; order: -1; }
-            .row { flex-direction: column; gap: 0; }
-        }
+        @media (max-width: 768px) { .container { flex-direction: column; } .anuncio-lateral { width: 100%; height: 100px; order: -1; } .row { flex-direction: column; gap: 0; } }
     </style>
 </head>
 <body>
@@ -117,17 +127,14 @@
     <nav>
         <a id="btn-molaridade" onclick="navegar('molaridade')">Molaridade</a>
         <a id="btn-diluicao" onclick="navegar('diluicao')">Diluição</a>
+        <a id="btn-slater" onclick="navegar('slater')">Blindagem</a>
+        <a id="btn-tabela" onclick="navegar('tabela')">Tabela Periódica</a>
         <a id="btn-conversor" onclick="navegar('conversor')">Conversor</a>
         <a id="btn-sobre" onclick="navegar('sobre')">Sobre</a>
     </nav>
 
     <div class="container">
-        
-        <!-- ======================================================= -->
-        <!-- ÁREA LATERAL ESQUERDA (ANÚNCIO)                         -->
-        <!-- ======================================================= -->
         <aside class="anuncio-lateral">
-            <!-- Quando tiver o código do anúncio (Display Ad), apague o texto abaixo e cole o código aqui -->
             ESPAÇO PUBLICITÁRIO<br>(Google Ads)
         </aside>
 
@@ -137,14 +144,12 @@
             <div id="pag-molaridade" class="pagina">
                 <h2>Cálculo de Molaridade Geral</h2>
                 <p style="margin-bottom: 15px; color: #666;">Utilize esta aba para cálculos envolvendo concentração molar, massa e volume.</p>
-
                 <div class="legenda-container">
                     <div class="legenda-item"><strong>M</strong> = Molaridade</div>
                     <div class="legenda-item"><strong>m</strong> = Massa (g)</div>
                     <div class="legenda-item"><strong>MM</strong> = Massa Molar</div>
                     <div class="legenda-item"><strong>V</strong> = Volume</div>
                 </div>
-
                 <div class="input-group" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
                     <label style="color: #0056b3;">O que você quer descobrir?</label>
                     <select id="tipoCalculo" onchange="atualizarCamposMolaridade()">
@@ -154,7 +159,6 @@
                         <option value="acharMM">Quero descobrir a MASSA MOLAR (MM)</option>
                     </select>
                 </div>
-
                 <div class="input-group" id="campo_M" style="display:none;">
                     <label>Molaridade (M) mol/L:</label>
                     <input type="number" id="flex_M" placeholder="Ex: 0.5">
@@ -171,7 +175,6 @@
                     <label>Massa do Soluto (g):</label>
                     <input type="number" id="flex_m" placeholder="Ex: 25">
                 </div>
-
                 <button class="btn-calcular" onclick="calcUniversal()">CALCULAR AGORA</button>
                 <div id="resMolaridade" class="resultado-box"></div>
             </div>
@@ -179,10 +182,7 @@
             <!-- === PÁGINA 2: DILUIÇÃO === -->
             <div id="pag-diluicao" class="pagina">
                 <h2>Cálculo de Diluição</h2>
-                <p style="margin-bottom: 15px; color: #666;">
-                    Fórmula base: <strong>C₁ . V₁ = C₂ . V₂</strong>. <br>Deixe vazio o campo que você deseja descobrir.
-                </p>
-
+                <p style="margin-bottom: 15px; color: #666;">Fórmula base: <strong>C₁ . V₁ = C₂ . V₂</strong>.</p>
                 <div class="row">
                     <div class="col">
                         <div class="input-group" style="background: #eef4fa; padding:10px; border-radius:5px;">
@@ -208,166 +208,148 @@
                 <div id="resDiluicao" class="resultado-box" style="background-color: #cff4fc; color: #055160; border-color: #b6effb;"></div>
             </div>
 
+            <!-- === PÁGINA SLATER === -->
+            <div id="pag-slater" class="pagina">
+                <h2>Regras de Slater (Blindagem)</h2>
+                <p style="margin-bottom: 15px;">Calcule a Carga Nuclear Efetiva (Zeff) e a Constante de Blindagem (S).</p>
+                <div class="input-group">
+                    <label>Número Atômico (Z):</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="number" id="slater_Z" placeholder="Ex: 29 (Cobre)" onchange="gerarConfiguracao()" style="flex: 1;">
+                        <span id="elemento-display"></span>
+                    </div>
+                    <small style="color:#666">Digite o número e aperte Enter ou clique fora.</small>
+                </div>
+                <div id="box-config" style="display:none;">
+                    <div id="aviso-excecao" class="alerta-excecao">
+                        ⚠️ <strong>Atenção:</strong> Este elemento apresenta uma distribuição eletrônica anômala (exceção à Regra de Aufbau) para maior estabilidade energética.
+                    </div>
+                    <p style="font-weight:bold; margin-bottom:5px;">Distribuição Eletrônica:</p>
+                    <div id="display-config" class="config-eletronica"></div>
+                    <div class="input-group" style="background: #e8f0fe; padding: 15px; border-radius: 8px;">
+                        <label style="color: #0056b3;">Qual subcamada (elétron) você quer analisar?</label>
+                        <select id="slater_orbital_target"></select>
+                    </div>
+                    <button class="btn-calcular" style="background-color: #6610f2;" onclick="calcularSlater()">CALCULAR Zeff e S</button>
+                </div>
+                <div id="resSlater" class="resultado-box" style="text-align: left;"></div>
+            </div>
+
+            <!-- === PÁGINA TABELA PERIÓDICA === -->
+            <div id="pag-tabela" class="pagina">
+                <h2>Tabela Periódica Interativa</h2>
+                <p style="margin-bottom: 10px; color: #666;">Clique em qualquer elemento para ver suas curiosidades.</p>
+                
+                <!-- LEGENDA DAS CORES -->
+                <div class="legenda-tabela">
+                    <div class="legenda-item"><span class="legenda-box cat-nao-metal"></span>Não-Metais</div>
+                    <div class="legenda-item"><span class="legenda-box cat-metal-alcalino"></span>Alc.</div>
+                    <div class="legenda-item"><span class="legenda-box cat-metal-alcalino-terroso"></span>Alc. Terrosos</div>
+                    <div class="legenda-item"><span class="legenda-box cat-metal-transicao"></span>Transição</div>
+                    <div class="legenda-item"><span class="legenda-box cat-metal-representativo"></span>Outros Metais</div>
+                    <div class="legenda-item"><span class="legenda-box cat-semimetal"></span>Semimetais</div>
+                    <div class="legenda-item"><span class="legenda-box cat-halogenio"></span>Halogênios</div>
+                    <div class="legenda-item"><span class="legenda-box cat-gas-nobre"></span>Gases Nobres</div>
+                    <div class="legenda-item"><span class="legenda-box cat-lantanideo"></span>Lantanídeos</div>
+                    <div class="legenda-item"><span class="legenda-box cat-actinideo"></span>Actinídeos</div>
+                </div>
+
+                <div class="tabela-scroll">
+                    <div id="grid-tabela" class="periodic-table"></div>
+                </div>
+
+                <div id="modal-elemento" class="modal-overlay" onclick="fecharModal(event)">
+                    <div class="modal-content">
+                        <button class="btn-close-modal" onclick="fecharModal(true)">×</button>
+                        <h2 id="modal-titulo" style="border: none; color: #0056b3; margin-bottom: 5px;">Hidrogênio (H)</h2>
+                        <p id="modal-cat" style="color: #666; font-style: italic; margin-bottom: 15px;">Não-Metal</p>
+                        
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; flex: 1; text-align: center;">
+                                <strong>Z</strong><br><span id="modal-z" style="font-size: 1.2rem;">1</span>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; flex: 1; text-align: center;">
+                                <strong>Massa</strong><br><span id="modal-massa">1.008</span>
+                            </div>
+                        </div>
+
+                        <div style="background: #e8f0fe; padding: 15px; border-radius: 8px; border-left: 5px solid #0056b3;">
+                            <h4 style="margin-bottom: 5px;">💡 Curiosidade:</h4>
+                            <p id="modal-curiosidade">...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- === PÁGINA 3: CONVERSOR === -->
             <div id="pag-conversor" class="pagina">
                 <h2>Conversor de Unidades</h2>
-                <p style="margin-bottom: 20px;">Digite um valor em qualquer campo para converter automaticamente.</p>
-                
-                <!-- TEMPERATURA -->
                 <div class="converter-box">
                     <div class="converter-title">🌡️ Temperatura</div>
                     <div class="row">
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Celsius (°C)</label>
-                                <input type="number" id="conv_C" oninput="converterTemp('C')" placeholder="0">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Kelvin (K)</label>
-                                <input type="number" id="conv_K" oninput="converterTemp('K')" placeholder="273.15">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Fahrenheit (°F)</label>
-                                <input type="number" id="conv_F" oninput="converterTemp('F')" placeholder="32">
-                            </div>
-                        </div>
+                        <div class="col"><div class="input-group"><label>Celsius (°C)</label><input type="number" id="conv_C" oninput="converterTemp('C')" placeholder="0"></div></div>
+                        <div class="col"><div class="input-group"><label>Kelvin (K)</label><input type="number" id="conv_K" oninput="converterTemp('K')" placeholder="273.15"></div></div>
+                        <div class="col"><div class="input-group"><label>Fahrenheit (°F)</label><input type="number" id="conv_F" oninput="converterTemp('F')" placeholder="32"></div></div>
                     </div>
                 </div>
-
-                <!-- PRESSÃO -->
                 <div class="converter-box">
                     <div class="converter-title">💨 Pressão</div>
                     <div class="row">
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Atmosfera (atm)</label>
-                                <input type="number" id="conv_atm" oninput="converterPressao('atm')" placeholder="1">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>mmHg / Torr</label>
-                                <input type="number" id="conv_mmhg" oninput="converterPressao('mmhg')" placeholder="760">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Pascal (Pa)</label>
-                                <input type="number" id="conv_pa" oninput="converterPressao('pa')" placeholder="101325">
-                            </div>
-                        </div>
+                        <div class="col"><div class="input-group"><label>Atmosfera (atm)</label><input type="number" id="conv_atm" oninput="converterPressao('atm')" placeholder="1"></div></div>
+                        <div class="col"><div class="input-group"><label>mmHg / Torr</label><input type="number" id="conv_mmhg" oninput="converterPressao('mmhg')" placeholder="760"></div></div>
+                        <div class="col"><div class="input-group"><label>Pascal (Pa)</label><input type="number" id="conv_pa" oninput="converterPressao('pa')" placeholder="101325"></div></div>
                     </div>
                 </div>
-
-                <!-- VOLUME -->
                 <div class="converter-box">
                     <div class="converter-title">🧪 Volume</div>
                     <div class="row">
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Litros (L)</label>
-                                <input type="number" id="conv_l" oninput="converterVolume('l')" placeholder="1">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Mililitros (ml)</label>
-                                <input type="number" id="conv_ml" oninput="converterVolume('ml')" placeholder="1000">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Metro Cúbico (m³)</label>
-                                <input type="number" id="conv_m3" oninput="converterVolume('m3')" placeholder="0.001">
-                            </div>
-                        </div>
+                        <div class="col"><div class="input-group"><label>Litros (L)</label><input type="number" id="conv_l" oninput="converterVolume('l')" placeholder="1"></div></div>
+                        <div class="col"><div class="input-group"><label>Mililitros (ml)</label><input type="number" id="conv_ml" oninput="converterVolume('ml')" placeholder="1000"></div></div>
+                        <div class="col"><div class="input-group"><label>Metro Cúbico (m³)</label><input type="number" id="conv_m3" oninput="converterVolume('m3')" placeholder="0.001"></div></div>
                     </div>
                 </div>
-
-                <!-- MASSA -->
                 <div class="converter-box">
                     <div class="converter-title">⚖️ Massa</div>
                     <div class="row">
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Quilogramas (kg)</label>
-                                <input type="number" id="conv_kg" oninput="converterMassa('kg')" placeholder="1">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Gramas (g)</label>
-                                <input type="number" id="conv_g" oninput="converterMassa('g')" placeholder="1000">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Miligramas (mg)</label>
-                                <input type="number" id="conv_mg" oninput="converterMassa('mg')" placeholder="1000000">
-                            </div>
-                        </div>
+                        <div class="col"><div class="input-group"><label>Quilogramas (kg)</label><input type="number" id="conv_kg" oninput="converterMassa('kg')" placeholder="1"></div></div>
+                        <div class="col"><div class="input-group"><label>Gramas (g)</label><input type="number" id="conv_g" oninput="converterMassa('g')" placeholder="1000"></div></div>
+                        <div class="col"><div class="input-group"><label>Miligramas (mg)</label><input type="number" id="conv_mg" oninput="converterMassa('mg')" placeholder="1000000"></div></div>
                     </div>
                 </div>
-
-                <!-- ENERGIA -->
                 <div class="converter-box">
                     <div class="converter-title">⚡ Energia (Termoquímica)</div>
                     <div class="row">
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Joules (J)</label>
-                                <input type="number" id="conv_j" oninput="converterEnergia('j')" placeholder="4.18">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Calorias (cal)</label>
-                                <input type="number" id="conv_cal" oninput="converterEnergia('cal')" placeholder="1">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <label>Quilocalorias (kcal)</label>
-                                <input type="number" id="conv_kcal" oninput="converterEnergia('kcal')" placeholder="0.001">
-                            </div>
-                        </div>
+                        <div class="col"><div class="input-group"><label>Joules (J)</label><input type="number" id="conv_j" oninput="converterEnergia('j')" placeholder="4.18"></div></div>
+                        <div class="col"><div class="input-group"><label>Calorias (cal)</label><input type="number" id="conv_cal" oninput="converterEnergia('cal')" placeholder="1"></div></div>
+                        <div class="col"><div class="input-group"><label>Quilocalorias (kcal)</label><input type="number" id="conv_kcal" oninput="converterEnergia('kcal')" placeholder="0.001"></div></div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- === PÁGINA 4: SOBRE (LIMPO) === -->
+            <!-- === PÁGINA 4: SOBRE === -->
             <div id="pag-sobre" class="pagina">
                 <h2>Sobre o Projeto</h2>
-                
-                <!-- Nota do Autor -->
                 <div class="autor-nota">
-                    <p><strong>Olá! 👋</strong></p>
-                    <p>Sou estudante de <strong>Química Industrial (2º Período)</strong> e desenvolvi este site para me ajudar nos estudos e facilitar a vida de outros colegas, técnicos e professores.</p>
-                    <p>Meu objetivo é democratizar o conhecimento e oferecer ferramentas rápidas e precisas.</p>
+                    <p><strong>Olá! 👋 Seja bem-vindo(a).</strong></p>
+                    <p>Sou estudante de <strong>Química Industrial (2º Período)</strong> e desenvolvi este projeto com uma missão especial: <strong>tornar a química mais acessível e menos complicada para todos.</strong></p>
+                    <br>
+                    <p>O que nasceu como uma ferramenta para auxiliar nos meus próprios estudos, hoje está disponível gratuitamente para apoiar estudantes, professores, técnicos e curiosos apaixonados pela ciência. Acredito que o conhecimento só tem valor real quando é compartilhado e facilita a vida das pessoas.</p>
+                    <br>
+                    <p>Espero que estas ferramentas economizem seu tempo e tornem sua jornada de aprendizado mais leve e produtiva!</p>
                 </div>
-                
                 <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 30px; border-left: 4px solid #28a745;">
                     <h3 style="margin-bottom: 10px; color: #28a745; font-size: 1.2rem;">Compromisso com a Qualidade</h3>
                     <p>✅ Interface otimizada para laboratório.</p>
                     <p>✅ Responsivo para uso em Celular e Tablet.</p>
                     <p>✅ Gratuito e acessível para todos.</p>
                     <br>
-                    <p style="font-weight: bold;">⚠️ Todas as fórmulas e constantes utilizadas seguem estritamente o padrão da IUPAC (União Internacional de Química Pura e Aplicada).</p>
+                    <p style="font-weight: bold;">⚠️ Todas as fórmulas e constantes utilizadas seguem estritamente o padrão da IUPAC.</p>
                 </div>
             </div>
 
         </main>
         
-        <!-- ======================================================= -->
-        <!-- ÁREA LATERAL DIREITA (ANÚNCIO)                          -->
-        <!-- ======================================================= -->
         <aside class="anuncio-lateral">
-             <!-- Quando tiver o código do anúncio (Display Ad), apague o texto abaixo e cole o código aqui -->
             ESPAÇO PUBLICITÁRIO<br>(Google Ads)
         </aside>
     </div>
@@ -384,174 +366,258 @@
             document.getElementById('pag-' + aba).classList.add('visivel');
             document.getElementById('btn-' + aba).classList.add('ativo');
         }
-        navegar('molaridade'); // Inicio
+        navegar('molaridade'); 
 
-        // --- CONVERSORES ---
-        function converterTemp(origem) {
-            let c = document.getElementById('conv_C');
-            let k = document.getElementById('conv_K');
-            let f = document.getElementById('conv_F');
-            let val = parseFloat(origem === 'C' ? c.value : origem === 'K' ? k.value : f.value);
-            if(isNaN(val)) { c.value=''; k.value=''; f.value=''; return; }
+        // ==========================================
+        // === BANCO DE DADOS COMPLETO (1-118) ===
+        // ==========================================
+        const db_elementos = [
+            null,
+            {z:1,s:"H",n:"Hidrogênio",m:"1.008",cat:"cat-nao-metal",info:"O elemento mais abundante do universo e combustível das estrelas."},
+            {z:2,s:"He",n:"Hélio",m:"4.0026",cat:"cat-gas-nobre",info:"O único elemento que não solidifica, mesmo no zero absoluto."},
+            {z:3,s:"Li",n:"Lítio",m:"6.94",cat:"cat-metal-alcalino",info:"Tão leve que flutua na água (e reage com ela). Essencial em baterias."},
+            {z:4,s:"Be",n:"Berílio",m:"9.0122",cat:"cat-metal-alcalino-terroso",info:"Transparente aos Raios-X, usado em janelas de equipamentos médicos."},
+            {z:5,s:"B",n:"Boro",m:"10.81",cat:"cat-semimetal",info:"Usado em vidro Pyrex e em fogos de artifício para cor verde."},
+            {z:6,s:"C",n:"Carbono",m:"12.011",cat:"cat-nao-metal",info:"A base da vida. Forma o diamante (duro) e o grafite (mole)."},
+            {z:7,s:"N",n:"Nitrogênio",m:"14.007",cat:"cat-nao-metal",info:"Compõe 78% do ar. Líquido, congela coisas instantaneamente."},
+            {z:8,s:"O",n:"Oxigênio",m:"15.999",cat:"cat-nao-metal",info:"Essencial para a respiração. Líquido, ele é azul pálido e magnético."},
+            {z:9,s:"F",n:"Flúor",m:"18.998",cat:"cat-halogenio",info:"O elemento mais reativo de todos. Faz até vidro queimar."},
+            {z:10,s:"Ne",n:"Neônio",m:"20.180",cat:"cat-gas-nobre",info:"Famoso pelos letreiros luminosos de cor laranja avermelhada."},
+            {z:11,s:"Na",n:"Sódio",m:"22.990",cat:"cat-metal-alcalino",info:"Metal macio que explode na água. Essencial para impulsos nervosos."},
+            {z:12,s:"Mg",n:"Magnésio",m:"24.305",cat:"cat-metal-alcalino-terroso",info:"Queima com uma luz branca cegante. Átomo central da clorofila."},
+            {z:13,s:"Al",n:"Alumínio",m:"26.982",cat:"cat-metal-representativo",info:"O metal mais abundante da crosta. Era mais caro que ouro no séc XIX."},
+            {z:14,s:"Si",n:"Silício",m:"28.085",cat:"cat-semimetal",info:"A base de todos os chips de computador e eletrônicos."},
+            {z:15,s:"P",n:"Fósforo",m:"30.974",cat:"cat-nao-metal",info:"Descoberto na urina em 1669. O fósforo branco brilha no escuro."},
+            {z:16,s:"S",n:"Enxofre",m:"32.06",cat:"cat-nao-metal",info:"Conhecido na bíblia como 'pedra de fogo'. Cheiro de ovo podre."},
+            {z:17,s:"Cl",n:"Cloro",m:"35.45",cat:"cat-halogenio",info:"Gás tóxico usado na 1ª Guerra, mas salva vidas purificando água."},
+            {z:18,s:"Ar",n:"Argônio",m:"39.948",cat:"cat-gas-nobre",info:"Preenche lâmpadas para evitar que o filamento queime."},
+            {z:19,s:"K",n:"Potássio",m:"39.098",cat:"cat-metal-alcalino",info:"Levemente radioativo. Uma banana emite antimatéria a cada 75 min."},
+            {z:20,s:"Ca",n:"Cálcio",m:"40.078",cat:"cat-metal-alcalino-terroso",info:"Essencial para ossos. O metal puro é prateado, não branco."},
+            {z:21,s:"Sc",n:"Escândio",m:"44.956",cat:"cat-metal-transicao",info:"Usado em quadros de bicicletas de alta performance e caças russos."},
+            {z:22,s:"Ti",n:"Titânio",m:"47.867",cat:"cat-metal-transicao",info:"Tão forte quanto aço, mas 45% mais leve. Biocompatível (implantes)."},
+            {z:23,s:"V",n:"Vanádio",m:"50.942",cat:"cat-metal-transicao",info:"Adicionado ao aço para fazer ferramentas (chaves de fenda)."},
+            {z:24,s:"Cr",n:"Cromo",m:"51.996",cat:"cat-metal-transicao",info:"Dá a cor vermelha ao rubi e verde à esmeralda."},
+            {z:25,s:"Mn",n:"Manganês",m:"54.938",cat:"cat-metal-transicao",info:"Essencial para fotossíntese. Sem ele, não existiria oxigênio livre."},
+            {z:26,s:"Fe",n:"Ferro",m:"55.845",cat:"cat-metal-transicao",info:"O elemento mais comum no planeta (graças ao núcleo)."},
+            {z:27,s:"Co",n:"Cobalto",m:"58.933",cat:"cat-metal-transicao",info:"Usado para tratar câncer (Bomba de Cobalto) e em pigmentos azuis."},
+            {z:28,s:"Ni",n:"Níquel",m:"58.693",cat:"cat-metal-transicao",info:"O núcleo da Terra é uma bola de ferro e níquel."},
+            {z:29,s:"Cu",n:"Cobre",m:"63.546",cat:"cat-metal-transicao",info:"Naturalmente antibacteriano. Um dos poucos metais coloridos."},
+            {z:30,s:"Zn",n:"Zinco",m:"65.38",cat:"cat-metal-transicao",info:"Galvaniza o aço para impedir ferrugem. Essencial para o sistema imune."},
+            {z:31,s:"Ga",n:"Gálio",m:"69.723",cat:"cat-metal-representativo",info:"Derrete na mão (P.F. 29°C) mas ferve só a 2400°C."},
+            {z:32,s:"Ge",n:"Germânio",m:"72.630",cat:"cat-semimetal",info:"O primeiro transistor foi feito dele, antes do Silício dominar."},
+            {z:33,s:"As",n:"Arsênio",m:"74.922",cat:"cat-semimetal",info:"Veneno famoso, mas curiosamente cheira a alho quando aquecido."},
+            {z:34,s:"Se",n:"Selênio",m:"78.971",cat:"cat-nao-metal",info:"Essencial em xampus anticaspa e na formação de hormônios."},
+            {z:35,s:"Br",n:"Bromo",m:"79.904",cat:"cat-halogenio",info:"O único não-metal líquido a temperatura ambiente. Cor vermelha."},
+            {z:36,s:"Kr",n:"Criptônio",m:"83.798",cat:"cat-gas-nobre",info:"Usado em flashes fotográficos de alta velocidade."},
+            {z:37,s:"Rb",n:"Rubídio",m:"85.468",cat:"cat-metal-alcalino",info:"Usado em relógios atômicos e fogos de artifício roxos."},
+            {z:38,s:"Sr",n:"Estrôncio",m:"87.62",cat:"cat-metal-alcalino-terroso",info:"Dá a cor vermelha intensa aos fogos de artifício."},
+            {z:39,s:"Y",n:"Ítrio",m:"88.906",cat:"cat-metal-transicao",info:"Encontrado em amostras lunares trazidas pelas missões Apollo."},
+            {z:40,s:"Zr",n:"Zircônio",m:"91.224",cat:"cat-metal-transicao",info:"Sua pedra (zircônia) imita diamante. Usado em reatores nucleares."},
+            {z:41,s:"Nb",n:"Nióbio",m:"92.906",cat:"cat-metal-transicao",info:"O Brasil detém 98% das reservas mundiais. Torna o aço super resistente."},
+            {z:42,s:"Mo",n:"Molibdênio",m:"95.95",cat:"cat-metal-transicao",info:"Essencial para que as plantas fixem nitrogênio do ar."},
+            {z:43,s:"Tc",n:"Tecnécio",m:"(98)",cat:"cat-metal-transicao",info:"O primeiro elemento artificial. Usado em exames médicos de imagem."},
+            {z:44,s:"Ru",n:"Rutênio",m:"101.07",cat:"cat-metal-transicao",info:"Usado em contatos elétricos que não podem oxidar nunca."},
+            {z:45,s:"Rh",n:"Ródio",m:"102.91",cat:"cat-metal-transicao",info:"O metal mais caro do mundo (mais que ouro), usado em catalisadores."},
+            {z:46,s:"Pd",n:"Paládio",m:"106.42",cat:"cat-metal-transicao",info:"Absorve 900x seu volume em hidrogênio."},
+            {z:47,s:"Ag",n:"Prata",m:"107.87",cat:"cat-metal-transicao",info:"O melhor condutor de calor e eletricidade de todos os metais."},
+            {z:48,s:"Cd",n:"Cádmio",m:"112.41",cat:"cat-metal-transicao",info:"Tóxico, era usado em pigmentos amarelos de pinturas famosas."},
+            {z:49,s:"In",n:"Índio",m:"114.82",cat:"cat-metal-representativo",info:"Permite que telas de toque (touchscreen) funcionem."},
+            {z:50,s:"Sn",n:"Estanho",m:"118.71",cat:"cat-metal-representativo",info:"Quando dobrado, faz um som característico ('grito do estanho')."},
+            {z:51,s:"Sb",n:"Antimônio",m:"121.76",cat:"cat-semimetal",info:"Usado pelos egípcios como maquiagem para os olhos (Kohl)."},
+            {z:52,s:"Te",n:"Telúrio",m:"127.60",cat:"cat-semimetal",info:"Um dos poucos elementos que se combina com ouro."},
+            {z:53,s:"I",n:"Iodo",m:"126.90",cat:"cat-halogenio",info:"Sublima (vira gás violeta direto do sólido). Essencial para a tireoide."},
+            {z:54,s:"Xe",n:"Xenônio",m:"131.29",cat:"cat-gas-nobre",info:"Usado em propulsores iônicos de espaçonaves da NASA."},
+            {z:55,s:"Cs",n:"Césio",m:"132.91",cat:"cat-metal-alcalino",info:"Define o segundo (tempo) em relógios atômicos. O isótopo 137 é perigoso."},
+            {z:56,s:"Ba",n:"Bário",m:"137.33",cat:"cat-metal-alcalino-terroso",info:"Usado como contraste em exames de Raio-X do estômago."},
+            {z:57,s:"La",n:"Lantânio",m:"138.91",cat:"cat-lantanideo",info:"Primeiro dos terras-raras. Usado em lentes de câmeras caras."},
+            {z:58,s:"Ce",n:"Cério",m:"140.12",cat:"cat-lantanideo",info:"O componente principal da 'pedra de isqueiro' (que solta faísca)."},
+            {z:59,s:"Pr",n:"Praseodímio",m:"140.91",cat:"cat-lantanideo",info:"Usado em óculos de soldador para filtrar luz amarela."},
+            {z:60,s:"Nd",n:"Neodímio",m:"144.24",cat:"cat-lantanideo",info:"Faz os ímãs permanentes mais fortes do mundo."},
+            {z:61,s:"Pm",n:"Promécio",m:"(145)",cat:"cat-lantanideo",info:"O único terra-rara radioativo. Usado em baterias atômicas."},
+            {z:62,s:"Sm",n:"Samário",m:"150.36",cat:"cat-lantanideo",info:"Primeiro elemento nomeado em homenagem a uma pessoa (Samarsky)."},
+            {z:63,s:"Eu",n:"Európio",m:"151.96",cat:"cat-lantanideo",info:"Brilha vermelho em TVs antigas e notas de Euro (anti-falsificação)."},
+            {z:64,s:"Gd",n:"Gadolínio",m:"157.25",cat:"cat-lantanideo",info:"Injetado na veia para ressonâncias magnéticas (MRI)."},
+            {z:65,s:"Tb",n:"Térbio",m:"158.93",cat:"cat-lantanideo",info:"Muda de forma em campos magnéticos. Usado em sonares navais."},
+            {z:66,s:"Dy",n:"Disprósio",m:"162.50",cat:"cat-lantanideo",info:"Seu nome grego significa 'difícil de obter'."},
+            {z:67,s:"Ho",n:"Hólmio",m:"164.93",cat:"cat-lantanideo",info:"Tem o maior momento magnético de qualquer elemento natural."},
+            {z:68,s:"Er",n:"Érbio",m:"167.26",cat:"cat-lantanideo",info:"Usado em lasers para cirurgias de pele e fibras ópticas."},
+            {z:69,s:"Tm",n:"Túlio",m:"168.93",cat:"cat-lantanideo",info:"O mais raro dos lantanídeos. Usado em máquinas de Raio-X portáteis."},
+            {z:70,s:"Yb",n:"Itérbio",m:"173.05",cat:"cat-lantanideo",info:"Melhora o aço inoxidável e é usado em lasers industriais."},
+            {z:71,s:"Lu",n:"Lutécio",m:"174.97",cat:"cat-lantanideo",info:"O mais duro e denso dos terras-raras. Usado para tratar câncer."},
+            {z:72,s:"Hf",n:"Háfnio",m:"178.49",cat:"cat-metal-transicao",info:"Sempre encontrado junto com Zircônio e muito difícil de separar."},
+            {z:73,s:"Ta",n:"Tântalo",m:"180.95",cat:"cat-metal-transicao",info:"Altamente biocompatível, usado em implantes cranianos."},
+            {z:74,s:"W",n:"Tungstênio",m:"183.84",cat:"cat-metal-transicao",info:"Tem o maior ponto de fusão de todos os metais (3422°C)."},
+            {z:75,s:"Re",n:"Rênio",m:"186.21",cat:"cat-metal-transicao",info:"Usado em motores a jato. O último elemento estável descoberto."},
+            {z:76,s:"Os",n:"Ósmio",m:"190.23",cat:"cat-metal-transicao",info:"O elemento natural mais denso. Um tijolo dele pesa 22kg."},
+            {z:77,s:"Ir",n:"Irídio",m:"192.22",cat:"cat-metal-transicao",info:"O metal mais resistente à corrosão. Abundante em meteoritos."},
+            {z:78,s:"Pt",n:"Platina",m:"195.08",cat:"cat-metal-transicao",info:"Catalisador poderoso. Usado em marcapassos e joias."},
+            {z:79,s:"Au",n:"Ouro",m:"196.97",cat:"cat-metal-transicao",info:"Tão maleável que 1g pode virar um fio de 3km. Inerte."},
+            {z:80,s:"Hg",n:"Mercúrio",m:"200.59",cat:"cat-metal-transicao",info:"Único metal líquido. Forma amálgamas com quase todos metais."},
+            {z:81,s:"Tl",n:"Tálio",m:"204.38",cat:"cat-metal-representativo",info:"Chamado de 'Veneno do Envenenador' por ser insípido e mortal."},
+            {z:82,s:"Pb",n:"Chumbo",m:"207.2",cat:"cat-metal-representativo",info:"Produto final estável da maioria das cadeias radioativas."},
+            {z:83,s:"Bi",n:"Bismuto",m:"208.98",cat:"cat-metal-representativo",info:"O metal 'pesado' menos tóxico. Cristais dele parecem arco-íris."},
+            {z:84,s:"Po",n:"Polônio",m:"(209)",cat:"cat-semimetal",info:"Descoberto por Marie Curie. Altamente radioativo e mortal."},
+            {z:85,s:"At",n:"Astato",m:"(210)",cat:"cat-halogenio",info:"O elemento natural mais raro. Existem menos de 30g na Terra inteira."},
+            {z:86,s:"Rn",n:"Radônio",m:"(222)",cat:"cat-gas-nobre",info:"Gás radioativo pesado que se acumula em porões de casas."},
+            {z:87,s:"Fr",n:"Frâncio",m:"(223)",cat:"cat-metal-alcalino",info:"O metal alcalino mais instável. Dura apenas 22 minutos."},
+            {z:88,s:"Ra",n:"Rádio",m:"(226)",cat:"cat-metal-alcalino-terroso",info:"Brilha no escuro. Usado em relógios até descobrirem o perigo."},
+            {z:89,s:"Ac",n:"Actínio",m:"(227)",cat:"cat-actinideo",info:"Brilha azul no escuro devido à intensa radiação ionizando o ar."},
+            {z:90,s:"Th",n:"Tório",m:"232.04",cat:"cat-actinideo",info:"Abundante e com potencial para substituir Urânio em reatores seguros."},
+            {z:91,s:"Pa",n:"Protactínio",m:"231.04",cat:"cat-actinideo",info:"Muito raro e tóxico. Precursor do Actínio."},
+            {z:92,s:"U",n:"Urânio",m:"238.03",cat:"cat-actinideo",info:"Combustível nuclear. Um grama tem energia de 3 toneladas de carvão."},
+            {z:93,s:"Np",n:"Netúnio",m:"(237)",cat:"cat-actinideo",info:"Primeiro elemento transurânico sintético."},
+            {z:94,s:"Pu",n:"Plutônio",m:"(244)",cat:"cat-actinideo",info:"Usado em armas nucleares e sondas espaciais (Voyager/Curiosity)."},
+            {z:95,s:"Am",n:"Amerício",m:"(243)",cat:"cat-actinideo",info:"Você tem em casa! Usado em detectores de fumaça."},
+            {z:96,s:"Cm",n:"Cúrio",m:"(247)",cat:"cat-actinideo",info:"Brilha roxo no escuro. Homenagem ao casal Curie."},
+            {z:97,s:"Bk",n:"Berquélio",m:"(247)",cat:"cat-actinideo",info:"Produzido em quantidades ínfimas apenas para pesquisa."},
+            {z:98,s:"Cf",n:"Califórnio",m:"(251)",cat:"cat-actinideo",info:"Emite nêutrons violentamente. Usado para achar petróleo e ouro."},
+            {z:99,s:"Es",n:"Einstênio",m:"(252)",cat:"cat-actinideo",info:"Descoberto nos destroços da primeira bomba de hidrogênio."},
+            {z:100,s:"Fm",n:"Férmio",m:"(257)",cat:"cat-actinideo",info:"O elemento mais pesado que pode ser criado bombardeando nêutrons."},
+            {z:101,s:"Md",n:"Mendelévio",m:"(258)",cat:"cat-actinideo",info:"Homenagem a Dmitri Mendeleev, pai da Tabela Periódica."},
+            {z:102,s:"No",n:"Nobélio",m:"(259)",cat:"cat-actinideo",info:"Nomeado em honra a Alfred Nobel, criador da dinamite."},
+            {z:103,s:"Lr",n:"Laurêncio",m:"(266)",cat:"cat-actinideo",info:"O último dos actinídeos."},
+            {z:104,s:"Rf",n:"Rutherfordio",m:"(267)",cat:"cat-metal-transicao",info:"Primeiro elemento superpesado. Meia-vida curtíssima."},
+            {z:105,s:"Db",n:"Dúbnio",m:"(268)",cat:"cat-metal-transicao",info:"Nomeado pela cidade russa de Dubna, centro de pesquisa nuclear."},
+            {z:106,s:"Sg",n:"Seabórgio",m:"(269)",cat:"cat-metal-transicao",info:"Único elemento nomeado com a pessoa ainda viva na época (Seaborg)."},
+            {z:107,s:"Bh",n:"Bóhrio",m:"(270)",cat:"cat-metal-transicao",info:"Homenagem a Niels Bohr, pai do modelo atômico moderno."},
+            {z:108,s:"Hs",n:"Hássio",m:"(277)",cat:"cat-metal-transicao",info:"Oxida para formar um gás muito volátil."},
+            {z:109,s:"Mt",n:"Meitnério",m:"(278)",cat:"cat-metal-transicao",info:"Homenagem a Lise Meitner, injustiçada no Nobel pela fissão nuclear."},
+            {z:110,s:"Ds",n:"Darmstadtio",m:"(281)",cat:"cat-metal-transicao",info:"Criado na Alemanha. Extremamente instável."},
+            {z:111,s:"Rg",n:"Roentgenio",m:"(282)",cat:"cat-metal-transicao",info:"Homenagem a Roentgen, descobridor do Raio-X."},
+            {z:112,s:"Cn",n:"Copernício",m:"(285)",cat:"cat-metal-transicao",info:"Provavelmente um metal gasoso a temperatura ambiente."},
+            {z:113,s:"Nh",n:"Nihônio",m:"(286)",cat:"cat-metal-representativo",info:"O primeiro elemento descoberto na Ásia (Japão)."},
+            {z:114,s:"Fl",n:"Fleróvio",m:"(289)",cat:"cat-metal-representativo",info:"Pode ser um 'metal nobre' superpesado devido a efeitos relativísticos."},
+            {z:115,s:"Mc",n:"Moscóvio",m:"(290)",cat:"cat-metal-representativo",info:"Dura milésimos de segundo. Alvo de teorias de OVNIs (Elemento 115)."},
+            {z:116,s:"Lv",n:"Livermório",m:"(293)",cat:"cat-metal-representativo",info:"Nomeado pelo laboratório Lawrence Livermore (EUA)."},
+            {z:117,s:"Ts",n:"Tenesso",m:"(294)",cat:"cat-halogenio",info:"O segundo elemento mais pesado conhecido."},
+            {z:118,s:"Og",n:"Oganessônio",m:"(294)",cat:"cat-gas-nobre",info:"O elemento mais pesado já feito. Um átomo dele pesa muito!"}
+        ];
 
-            if (origem === 'C') {
-                k.value = (val + 273.15).toFixed(2);
-                f.value = ((val * 9/5) + 32).toFixed(2);
-            } else if (origem === 'K') {
-                c.value = (val - 273.15).toFixed(2);
-                f.value = ((val - 273.15) * 9/5 + 32).toFixed(2);
-            } else if (origem === 'F') {
-                c.value = ((val - 32) * 5/9).toFixed(2);
-                k.value = (((val - 32) * 5/9) + 273.15).toFixed(2);
-            }
+        function getElemento(z) {
+            if (db_elementos[z]) return db_elementos[z];
+            return { z: z, s: '?', n: 'Desconhecido', m: '---', cat: 'cat-desconhecido', info: 'Dados não disponíveis.' };
         }
 
-        function converterPressao(origem) {
-            let atm = document.getElementById('conv_atm');
-            let mmhg = document.getElementById('conv_mmhg');
-            let pa = document.getElementById('conv_pa');
-            let val = parseFloat(origem === 'atm' ? atm.value : origem === 'mmhg' ? mmhg.value : pa.value);
-            if(isNaN(val)) { atm.value=''; mmhg.value=''; pa.value=''; return; }
+        // ==========================================
+        // === TABELA PERIÓDICA RENDERIZADOR ===
+        // ==========================================
+        function renderTabela() {
+            const grid = document.getElementById('grid-tabela');
+            grid.innerHTML = '';
 
-            if (origem === 'atm') {
-                mmhg.value = (val * 760).toFixed(2);
-                pa.value = (val * 101325).toFixed(1);
-            } else if (origem === 'mmhg') {
-                atm.value = (val / 760).toFixed(4);
-                pa.value = ((val / 760) * 101325).toFixed(1);
-            } else if (origem === 'pa') {
-                atm.value = (val / 101325).toFixed(6);
-                mmhg.value = ((val / 101325) * 760).toFixed(2);
-            }
-        }
-
-        // Novos Conversores
-        function converterVolume(origem) {
-            let l = document.getElementById('conv_l');
-            let ml = document.getElementById('conv_ml');
-            let m3 = document.getElementById('conv_m3');
-            let val = parseFloat(origem === 'l' ? l.value : origem === 'ml' ? ml.value : m3.value);
-            if(isNaN(val)) { l.value=''; ml.value=''; m3.value=''; return; }
-
-            if (origem === 'l') {
-                ml.value = (val * 1000).toFixed(2);
-                m3.value = (val / 1000).toFixed(6);
-            } else if (origem === 'ml') {
-                l.value = (val / 1000).toFixed(4);
-                m3.value = (val / 1000000).toFixed(8);
-            } else if (origem === 'm3') {
-                l.value = (val * 1000).toFixed(2);
-                ml.value = (val * 1000000).toFixed(2);
-            }
-        }
-
-        function converterMassa(origem) {
-            let kg = document.getElementById('conv_kg');
-            let g = document.getElementById('conv_g');
-            let mg = document.getElementById('conv_mg');
-            let val = parseFloat(origem === 'kg' ? kg.value : origem === 'g' ? g.value : mg.value);
-            if(isNaN(val)) { kg.value=''; g.value=''; mg.value=''; return; }
-
-            if (origem === 'kg') {
-                g.value = (val * 1000).toFixed(2);
-                mg.value = (val * 1000000).toFixed(2);
-            } else if (origem === 'g') {
-                kg.value = (val / 1000).toFixed(4);
-                mg.value = (val * 1000).toFixed(2);
-            } else if (origem === 'mg') {
-                kg.value = (val / 1000000).toFixed(8);
-                g.value = (val / 1000).toFixed(4);
-            }
-        }
-
-        function converterEnergia(origem) {
-            let j = document.getElementById('conv_j');
-            let cal = document.getElementById('conv_cal');
-            let kcal = document.getElementById('conv_kcal');
-            let val = parseFloat(origem === 'j' ? j.value : origem === 'cal' ? cal.value : kcal.value);
-            if(isNaN(val)) { j.value=''; cal.value=''; kcal.value=''; return; }
-
-            // 1 cal = 4.184 J
-            if (origem === 'j') {
-                cal.value = (val / 4.184).toFixed(4);
-                kcal.value = (val / 4184).toFixed(6);
-            } else if (origem === 'cal') {
-                j.value = (val * 4.184).toFixed(2);
-                kcal.value = (val / 1000).toFixed(4);
-            } else if (origem === 'kcal') {
-                j.value = (val * 4184).toFixed(2);
-                cal.value = (val * 1000).toFixed(2);
-            }
-        }
-
-        // --- MOLARIDADE ---
-        function atualizarCamposMolaridade() {
-            let tipo = document.getElementById('tipoCalculo').value;
-            ['campo_M', 'campo_MM', 'campo_Volume', 'campo_Massa'].forEach(id => document.getElementById(id).style.display = 'none');
+            const mapPos = [
+                {z:1, r:1, c:1}, {z:2, r:1, c:18}, 
+                {z:3, r:2, c:1}, {z:4, r:2, c:2}, {z:5, r:2, c:13}, {z:6, r:2, c:14}, {z:7, r:2, c:15}, {z:8, r:2, c:16}, {z:9, r:2, c:17}, {z:10, r:2, c:18},
+                {z:11, r:3, c:1}, {z:12, r:3, c:2}, {z:13, r:3, c:13}, {z:14, r:3, c:14}, {z:15, r:3, c:15}, {z:16, r:3, c:16}, {z:17, r:3, c:17}, {z:18, r:3, c:18}
+            ];
             
-            if (tipo === 'acharMolaridade') {
-                ['campo_Massa', 'campo_MM', 'campo_Volume'].forEach(id => document.getElementById(id).style.display = 'block');
-            } else if (tipo === 'acharMassa') {
-                ['campo_M', 'campo_MM', 'campo_Volume'].forEach(id => document.getElementById(id).style.display = 'block');
-            } else if (tipo === 'acharVolume') {
-                ['campo_M', 'campo_MM', 'campo_Massa'].forEach(id => document.getElementById(id).style.display = 'block');
-            } else if (tipo === 'acharMM') {
-                ['campo_M', 'campo_Massa', 'campo_Volume'].forEach(id => document.getElementById(id).style.display = 'block');
-            }
-            document.getElementById('resMolaridade').style.display = 'none';
+            for(let i=0; i<18; i++) mapPos.push({z:19+i, r:4, c:i+1});
+            for(let i=0; i<18; i++) mapPos.push({z:37+i, r:5, c:i+1});
+
+            mapPos.push({z:55, r:6, c:1}, {z:56, r:6, c:2});
+            for(let i=0; i<15; i++) mapPos.push({z:57+i, r:8, c:i+4}); // Lantanideos
+            for(let i=0; i<15; i++) mapPos.push({z:72+i, r:6, c:i+4});
+
+            mapPos.push({z:87, r:7, c:1}, {z:88, r:7, c:2});
+            for(let i=0; i<15; i++) mapPos.push({z:89+i, r:9, c:i+4}); // Actinideos
+            for(let i=0; i<15; i++) mapPos.push({z:104+i, r:7, c:i+4});
+
+            mapPos.forEach(p => {
+                let el = getElemento(p.z);
+                let div = document.createElement('div');
+                div.className = `element-cell ${el.cat}`;
+                div.style.gridColumn = p.c;
+                div.style.gridRow = p.r;
+                div.innerHTML = `
+                    <span class="cell-num">${el.z}</span>
+                    <span class="cell-sym">${el.s}</span>
+                    <span class="cell-name">${el.n}</span>
+                `;
+                div.onclick = () => abrirModal(el);
+                grid.appendChild(div);
+            });
         }
 
-        function calcUniversal() {
-            let tipo = document.getElementById('tipoCalculo').value;
-            let M = parseFloat(document.getElementById('flex_M').value);
-            let m = parseFloat(document.getElementById('flex_m').value);
-            let MM = parseFloat(document.getElementById('flex_MM').value);
-            let V = parseFloat(document.getElementById('flex_V').value);
-            let resDiv = document.getElementById('resMolaridade');
-            let res = 0; let unid = "";
-
-            if (tipo === 'acharMolaridade') {
-                if(isNaN(m) || isNaN(MM) || isNaN(V)) return alert("Preencha os campos!");
-                res = m / (MM * (V/1000)); unid = "mol/L";
-            } else if (tipo === 'acharMassa') {
-                if(isNaN(M) || isNaN(MM) || isNaN(V)) return alert("Preencha os campos!");
-                res = M * MM * (V/1000); unid = "g";
-            } else if (tipo === 'acharVolume') {
-                if(isNaN(M) || isNaN(MM) || isNaN(m)) return alert("Preencha os campos!");
-                res = (m / (M * MM)) * 1000; unid = "ml";
-            } else if (tipo === 'acharMM') {
-                if(isNaN(M) || isNaN(m) || isNaN(V)) return alert("Preencha os campos!");
-                res = m / (M * (V/1000)); unid = "g/mol";
-            }
-            resDiv.style.display = 'block';
-            resDiv.innerHTML = "Resultado: <br><strong style='font-size:1.5rem'>" + res.toFixed(4) + " " + unid + "</strong>";
-        }
-
-        // --- DILUIÇÃO ---
-        function calcDiluicao() {
-            let c1 = parseFloat(document.getElementById('d_c1').value);
-            let v1 = parseFloat(document.getElementById('d_v1').value);
-            let c2 = parseFloat(document.getElementById('d_c2').value);
-            let v2 = parseFloat(document.getElementById('d_v2').value);
-            let resDiv = document.getElementById('resDiluicao');
-            let res = 0; let txt = "";
-
-            if (!document.getElementById('d_c1').value) {
-                res = (c2 * v2) / v1; txt = "Concentração Inicial (C1)";
-            } else if (!document.getElementById('d_v1').value) {
-                res = (c2 * v2) / c1; txt = "Volume Inicial (V1)";
-            } else if (!document.getElementById('d_c2').value) {
-                res = (c1 * v1) / v2; txt = "Concentração Final (C2)";
-            } else if (!document.getElementById('d_v2').value) {
-                res = (c1 * v1) / c2; txt = "Volume Final (V2)";
-            } else { return alert("Deixe UM campo vazio para descobrir!"); }
+        function abrirModal(el) {
+            document.getElementById('modal-titulo').innerText = `${el.n} (${el.s})`;
+            document.getElementById('modal-cat').innerText = el.cat.replace('cat-', '').replace(/-/g, ' ').toUpperCase();
+            document.getElementById('modal-z').innerText = el.z;
+            document.getElementById('modal-massa').innerText = el.m;
+            document.getElementById('modal-curiosidade').innerText = el.info;
             
-            if(isNaN(res) || !isFinite(res)) return alert("Erro nos valores.");
-            resDiv.style.display = 'block';
-            resDiv.innerHTML = txt + ": <br><strong style='font-size:1.5rem'>" + res.toFixed(2) + "</strong>";
+            document.getElementById('modal-elemento').style.display = 'flex';
         }
+
+        function fecharModal(event) {
+            if (event === true || event.target.id === 'modal-elemento') {
+                document.getElementById('modal-elemento').style.display = 'none';
+            }
+        }
+
+        renderTabela();
+
+        // ==========================================
+        // === CÓDIGOS ANTERIORES (MANTIDOS) ===
+        // ==========================================
+        let configGlobal = []; let subcamadasGlobal = [];
+        function gerarConfiguracao() {
+            const Z = parseInt(document.getElementById('slater_Z').value);
+            const elDisplay = document.getElementById('elemento-display');
+            if (!Z || Z <= 0 || Z > 118) { alert("Z inválido"); return; }
+            let el = getElemento(Z); // Reutiliza a função da tabela!
+            elDisplay.innerHTML = `${el.n} (${el.s})`; elDisplay.style.opacity=1;
+            
+            document.getElementById('aviso-excecao').style.display='none';
+            let excecaoDetectada=false;
+            const ordem=[{n:1,l:0,cap:2},{n:2,l:0,cap:2},{n:2,l:1,cap:6},{n:3,l:0,cap:2},{n:3,l:1,cap:6},{n:4,l:0,cap:2},{n:3,l:2,cap:10},{n:4,l:1,cap:6},{n:5,l:0,cap:2},{n:4,l:2,cap:10},{n:5,l:1,cap:6},{n:6,l:0,cap:2},{n:4,l:3,cap:14},{n:5,l:2,cap:10},{n:6,l:1,cap:6},{n:5,l:3,cap:14},{n:6,l:2,cap:10},{n:7,l:0,cap:2},{n:6,l:3,cap:14},{n:7,l:1,cap:6}];
+            let ele=Z,config=[];
+            for(let s of ordem){if(ele<=0)break;let q=Math.min(ele,s.cap);config.push({n:s.n,l:s.l,qtd:q});ele-=q;}
+            let last=config[config.length-1];
+            if(last.l===2){let sIdx=config.findIndex(c=>c.n===last.n+1&&c.l===0);if(sIdx!==-1){if(last.qtd===4){config[sIdx].qtd--;last.qtd++;excecaoDetectada=true}else if(last.qtd===9){config[sIdx].qtd--;last.qtd++;excecaoDetectada=true}}}
+            if(excecaoDetectada)document.getElementById('aviso-excecao').style.display='block';
+            config.sort((a,b)=>(a.n-b.n)||(a.l-b.l));
+            subcamadasGlobal=JSON.parse(JSON.stringify(config));
+            let gSlater=[];
+            config.forEach(c=>{if(c.l<=1){let g=gSlater.find(x=>x.n===c.n&&x.tipo==='sp');if(!g){g={n:c.n,tipo:'sp',s:0,p:0,qtd:0};gSlater.push(g)}if(c.l===0)g.s+=c.qtd;if(c.l===1)g.p+=c.qtd;g.qtd+=c.qtd}else{let ln=['s','p','d','f'][c.l];gSlater.push({n:c.n,tipo:'df',lName:ln,qtd:c.qtd})}});
+            gSlater.forEach(g=>{if(g.tipo==='sp')g.text=`(${g.n}s${g.s}${g.p>0?' '+g.n+'p'+g.p:''})`;else g.text=`(${g.n}${g.lName}${g.qtd})`});
+            configGlobal=gSlater;
+            document.getElementById('display-config').innerHTML=subcamadasGlobal.map(c=>`${c.n}${['s','p','d','f'][c.l]}<sup>${c.qtd}</sup>`).join(" ");
+            document.getElementById('box-config').style.display='block';
+            let sel=document.getElementById('slater_orbital_target');sel.innerHTML="";
+            subcamadasGlobal.forEach((s,i)=>{let o=document.createElement('option');o.value=i;o.text=`${s.n}${['s','p','d','f'][s.l]} (${s.qtd} e-)`;sel.appendChild(o)});
+            sel.value=subcamadasGlobal.length-1;
+        }
+
+        function calcularSlater(){
+            const Z=parseInt(document.getElementById('slater_Z').value);
+            const iSub=parseInt(document.getElementById('slater_orbital_target').value);
+            const sub=subcamadasGlobal[iSub];
+            let iG=-1;
+            for(let i=0;i<configGlobal.length;i++){let g=configGlobal[i];if(g.n===sub.n){if(g.tipo==='sp'&&sub.l<=1){iG=i;break}if(g.tipo==='df'&&['s','p','d','f'][sub.l]===g.lName){iG=i;break}}}
+            const gAlvo=configGlobal[iG];
+            let S=0,log="";
+            let qMesmo=gAlvo.qtd-1; let vMesmo=(gAlvo.n===1&&gAlvo.tipo==='sp')?0.30:0.35;
+            S+=qMesmo*vMesmo;
+            if(qMesmo>0)log+=`<p>• Mesmo Grupo: ${qMesmo} x ${vMesmo} = ${(qMesmo*vMesmo).toFixed(2)}</p>`;
+            for(let i=0;i<iG;i++){let g=configGlobal[i],val=0;if(gAlvo.tipo==='sp'){if(g.n===gAlvo.n-1)val=0.85;else if(g.n<gAlvo.n-1)val=1.00}else val=1.00;if(val>0){let p=g.qtd*val;S+=p;log+=`<p>• Grupo ${g.text}: ${g.qtd} x ${val} = ${p.toFixed(2)}</p>`}}
+            document.getElementById('resSlater').style.display='block';
+            document.getElementById('resSlater').innerHTML=`<div class="slater-steps">${log}</div><div style="text-align:center;margin-top:10px"><strong>S = ${S.toFixed(2)} | Zeff = ${(Z-S).toFixed(2)}</strong></div>`;
+        }
+
+        // Conversores
+        function converterTemp(o){let c=document.getElementById('conv_C'),k=document.getElementById('conv_K'),f=document.getElementById('conv_F'),v=parseFloat(o==='C'?c.value:o==='K'?k.value:f.value);if(isNaN(v)){c.value='';k.value='';f.value='';return}if(o==='C'){k.value=(v+273.15).toFixed(2);f.value=((v*9/5)+32).toFixed(2)}else if(o==='K'){c.value=(v-273.15).toFixed(2);f.value=((v-273.15)*9/5+32).toFixed(2)}else{c.value=((v-32)*5/9).toFixed(2);k.value=(((v-32)*5/9)+273.15).toFixed(2)}}
+        function converterPressao(o){let a=document.getElementById('conv_atm'),m=document.getElementById('conv_mmhg'),p=document.getElementById('conv_pa'),v=parseFloat(o==='atm'?a.value:o==='mmhg'?m.value:p.value);if(isNaN(v)){a.value='';m.value='';p.value='';return}if(o==='atm'){m.value=(v*760).toFixed(2);p.value=(v*101325).toFixed(1)}else if(o==='mmhg'){a.value=(v/760).toFixed(4);p.value=((v/760)*101325).toFixed(1)}else{a.value=(v/101325).toFixed(6);m.value=((v/101325)*760).toFixed(2)}}
+        function converterVolume(o){let l=document.getElementById('conv_l'),ml=document.getElementById('conv_ml'),m3=document.getElementById('conv_m3'),v=parseFloat(o==='l'?l.value:o==='ml'?ml.value:m3.value);if(isNaN(v)){l.value='';ml.value='';m3.value='';return}if(o==='l'){ml.value=(v*1e3).toFixed(2);m3.value=(v/1e3).toFixed(6)}else if(o==='ml'){l.value=(v/1e3).toFixed(4);m3.value=(v/1e6).toFixed(8)}else{l.value=(v*1e3).toFixed(2);ml.value=(v*1e6).toFixed(2)}}
+        function converterMassa(o){let kg=document.getElementById('conv_kg'),g=document.getElementById('conv_g'),mg=document.getElementById('conv_mg'),v=parseFloat(o==='kg'?kg.value:o==='g'?g.value:mg.value);if(isNaN(v)){kg.value='';g.value='';mg.value='';return}if(o==='kg'){g.value=(v*1e3).toFixed(2);mg.value=(v*1e6).toFixed(2)}else if(o==='g'){kg.value=(v/1e3).toFixed(4);mg.value=(v*1e3).toFixed(2)}else{kg.value=(v/1e6).toFixed(8);g.value=(v/1e3).toFixed(4)}}
+        function converterEnergia(o){let j=document.getElementById('conv_j'),cal=document.getElementById('conv_cal'),kcal=document.getElementById('conv_kcal'),v=parseFloat(o==='j'?j.value:o==='cal'?cal.value:kcal.value);if(isNaN(v)){j.value='';cal.value='';kcal.value='';return}if(o==='j'){cal.value=(v/4.184).toFixed(4);kcal.value=(v/4184).toFixed(6)}else if(o==='cal'){j.value=(v*4.184).toFixed(2);kcal.value=(v/1000).toFixed(4)}else{j.value=(v*4184).toFixed(2);cal.value=(v*1000).toFixed(2)}}
+
+        // Molaridade e Diluição
+        function atualizarCamposMolaridade(){let t=document.getElementById('tipoCalculo').value;['campo_M','campo_MM','campo_Volume','campo_Massa'].forEach(id=>document.getElementById(id).style.display='none');if(t==='acharMolaridade')['campo_Massa','campo_MM','campo_Volume'].forEach(id=>document.getElementById(id).style.display='block');else if(t==='acharMassa')['campo_M','campo_MM','campo_Volume'].forEach(id=>document.getElementById(id).style.display='block');else if(t==='acharVolume')['campo_M','campo_MM','campo_Massa'].forEach(id=>document.getElementById(id).style.display='block');else if(t==='acharMM')['campo_M','campo_Massa','campo_Volume'].forEach(id=>document.getElementById(id).style.display='block');document.getElementById('resMolaridade').style.display='none'}
+        function calcUniversal(){let t=document.getElementById('tipoCalculo').value,M=parseFloat(document.getElementById('flex_M').value),m=parseFloat(document.getElementById('flex_m').value),MM=parseFloat(document.getElementById('flex_MM').value),V=parseFloat(document.getElementById('flex_V').value),resDiv=document.getElementById('resMolaridade'),res=0,unid="";if(t==='acharMolaridade'){res=m/(MM*(V/1e3));unid="mol/L"}else if(t==='acharMassa'){res=M*MM*(V/1e3);unid="g"}else if(t==='acharVolume'){res=(m/(M*MM))*1e3;unid="ml"}else if(t==='acharMM'){res=m/(M*(V/1e3));unid="g/mol"}if(isNaN(res)||!isFinite(res))return alert("Preencha os campos!");resDiv.style.display='block';resDiv.innerHTML="Resultado: <br><strong style='font-size:1.5rem'>"+res.toFixed(4)+" "+unid+"</strong>"}
+        function calcDiluicao(){let c1=parseFloat(document.getElementById('d_c1').value),v1=parseFloat(document.getElementById('d_v1').value),c2=parseFloat(document.getElementById('d_c2').value),v2=parseFloat(document.getElementById('d_v2').value),resDiv=document.getElementById('resDiluicao'),res=0,txt="";if(!document.getElementById('d_c1').value){res=(c2*v2)/v1;txt="Concentração Inicial (C1)"}else if(!document.getElementById('d_v1').value){res=(c2*v2)/c1;txt="Volume Inicial (V1)"}else if(!document.getElementById('d_c2').value){res=(c1*v1)/v2;txt="Concentração Final (C2)"}else if(!document.getElementById('d_v2').value){res=(c1*v1)/c2;txt="Volume Final (V2)"}else return alert("Deixe UM campo vazio!");if(isNaN(res)||!isFinite(res))return alert("Erro nos valores.");resDiv.style.display='block';resDiv.innerHTML=txt+": <br><strong style='font-size:1.5rem'>"+res.toFixed(2)+"</strong>"}
         
-        atualizarCamposMolaridade();
+        atualizarCamposMolaridade(); // Inicia correto
     </script>
 </body>
 </html>
+
